@@ -19,10 +19,13 @@ require('dotenv').config();
 
 const dbURL = process.env.DATABASE_URL;
 
-const sequelize = new Sequelize(dbURL, {
-  dialectOptions: {
-    ssl: true,
-  },
-});
+const sequelize = new Sequelize(
+  'postgres://node_server_todo_db_user:sBBCCjdKzvXDiw76PhHdVNz2r50F7IgV@dpg-cp3239cf7o1s73bq9hl0-a.frankfurt-postgres.render.com/node_server_todo_db',
+  {
+    dialectOptions: {
+      ssl: true,
+    },
+  }
+);
 
 module.exports = { sequelize };
