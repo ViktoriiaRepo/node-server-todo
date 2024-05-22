@@ -1,6 +1,6 @@
 const { sequelize } = require('../db');
 const { DataTypes, Op } = require('sequelize');
-const { Todo } = require('../models.todo/todo');
+// const Todo = require('../models_todo/todo');
 
 // const Todo = sequelize.define(
 //   'Todo',
@@ -31,6 +31,39 @@ const { Todo } = require('../models.todo/todo');
 //   }
 // );
 
+const Todo = sequelize.define(
+  'Todo',
+  {
+    id: {
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+      primaryKey: true,
+    },
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    completed: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false,
+    },
+    createdAt: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: DataTypes.NOW,
+    },
+    updatedAt: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: DataTypes.NOW,
+    },
+  },
+  {
+    tableName: 'todos',
+  }
+);
+
 const normalize = ({ id, title, completed }) => {
   return {
     id,
@@ -48,11 +81,11 @@ const getAll = async () => {
 };
 
 const getById = async (id) => {
-  return Todo.findByPk(id);
+  return await Todo.findByPk(id);
 };
 
-const create = (title) => {
-  return Todo.create({ title });
+const create = async (title) => {
+  return await Todo.create({ title });
 };
 
 const update = async ({ id, title, completed }) => {

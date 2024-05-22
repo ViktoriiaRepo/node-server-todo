@@ -1,5 +1,5 @@
 const todoService = require('../services/todo.service');
-const Todo = require('../models.todo/todo');
+// const Todo = require('../models.todo/todo');
 
 // const get = async (req, res) => {
 //   const todos = await todoService.getAll();
@@ -9,7 +9,7 @@ const Todo = require('../models.todo/todo');
 
 const get = async (req, res) => {
   try {
-    const todos = await Todo.findAll();
+    const todos = await todoService.Todo.findAll();
     res.status(200).json(todos);
   } catch (error) {
     res.status(500).json({ error: error.message });

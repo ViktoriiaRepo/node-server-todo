@@ -18,10 +18,22 @@ const Todo = sequelize.define(
       allowNull: false,
       defaultValue: false,
     },
+    createdAt: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: DataTypes.NOW,
+    },
+    updatedAt: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: DataTypes.NOW,
+    },
   },
   {
     tableName: 'todos',
   }
 );
 
-module.exports = Todo;
+module.exports = {
+  Todo,
+};
