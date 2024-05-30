@@ -1,11 +1,4 @@
 const todoService = require('../services/todo.service');
-// const Todo = require('../models.todo/todo');
-
-// const get = async (req, res) => {
-//   const todos = await todoService.getAll();
-
-//   res.send(todos.map((todo) => todoService.normalize(todo)));
-// };
 
 const get = async (req, res) => {
   try {

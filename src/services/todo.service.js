@@ -1,35 +1,5 @@
 const { sequelize } = require('../db');
 const { DataTypes, Op } = require('sequelize');
-// const Todo = require('../models_todo/todo');
-
-// const Todo = sequelize.define(
-//   'Todo',
-//   {
-//     id: {
-//       type: DataTypes.UUID,
-//       defaultValue: DataTypes.UUIDV4,
-//       primaryKey: true,
-//     },
-//     title: {
-//       type: DataTypes.STRING,
-//       allowNull: false,
-//     },
-//     completed: {
-//       type: DataTypes.BOOLEAN,
-//       allowNull: false,
-//       defaultValue: false,
-//     },
-//     createdAt: {
-//       type: DataTypes.DATE,
-//       field: 'created_at',
-//       allowNull: false,
-//       defaultValue: DataTypes.NOW,
-//     },
-//   },
-//   {
-//     tableName: 'todos',
-//   }
-// );
 
 const Todo = sequelize.define(
   'Todo',
@@ -107,13 +77,6 @@ function isUUID(id) {
 }
 
 const removeMany = async (ids) => {
-  // await sequelize.query(
-  //   `DELETE FROM todos
-  //   WHERE id IN (?)`,
-  //   {
-  //     replacements: [ids],
-  //   }
-  // );
   await Todo.destroy({
     where: {
       id: {
